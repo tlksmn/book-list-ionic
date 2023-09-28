@@ -1,0 +1,8 @@
+{
+  "name": "book-list-ionic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "d101d71a"
+}
