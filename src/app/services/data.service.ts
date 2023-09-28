@@ -259,12 +259,11 @@ export class DataService {
   public getMessageById(id: number): Message {
     return this.messages[id];
   }
-
   public getBooks(): BookElem[]{
     return this.books;
   }
 
   public getBookById(id: number): BookElem{
-    return this.books[id]
+    return this.books[id] || this.books[1]
   }
 }
