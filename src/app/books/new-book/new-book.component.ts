@@ -11,12 +11,12 @@ export class NewBookComponent implements OnInit {
   private readonly dataService: DataService = inject(DataService);
 
   public newBookForm = new FormGroup({
-    name: new FormControl('', [Validators.minLength(1)]),
-    author: new FormControl('', [Validators.minLength(1)]),
-    description: new FormControl('', [Validators.minLength(1)]),
-    language: new FormControl('russian', [Validators.minLength(1)]),
-    genre: new FormControl('classic', [Validators.minLength(1)]),
-    pageCount: new FormControl(10, [Validators.min(1)]),
+    name: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    author: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    description: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    language: new FormControl('russian', [Validators.required, Validators.minLength(2)]),
+    genre: new FormControl('classic', [Validators.required, Validators.minLength(1)]),
+    pageCount: new FormControl(10, [Validators.required, Validators.min(1)]),
     year: new FormControl(2023),
   })
 

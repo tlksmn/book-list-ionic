@@ -25,11 +25,11 @@ export class BooksComponent implements OnInit, OnDestroy {
   public bookFilterFormValues!: BookFilterFormValues
 
   public bookFilterForm = new FormGroup({
-    author: new FormControl([]),
-    year: new FormControl([]),
-    pageCount: new FormControl([]),
-    language: new FormControl([]),
-    genre: new FormControl([]),
+    author: new FormControl(['']),
+    year: new FormControl([0]),
+    pageCount: new FormControl([0]),
+    language: new FormControl(['']),
+    genre: new FormControl(['']),
   })
   public bookSearchForm = new FormGroup({
     search: new FormControl('')
@@ -53,7 +53,35 @@ export class BooksComponent implements OnInit, OnDestroy {
     }
     this.bookFilterForm.valueChanges
       .pipe(
-        tap(console.log),
+        tap((value) => {
+          let temp: BookElem[] = this.dataService.getBooks()
+          if (value?.author && value.author.length > 0) {
+            temp = temp.filter(e => value.author!.includes(e.author))
+          }
+          if (value?.genre && value.genre.length > 0) {
+            temp = temp.filter(e => value.genre!.includes(e.genre))
+          }
+          if (value?.language && value.language.length > 0) {
+            temp = temp.filter(e => value.language!.includes(e.language))
+          }
+          if (value?.pageCount && value.pageCount.length > 0) {
+            if (value.pageCount!.length > 2) {
+              temp = temp.filter(e => e.pageCount && (e.pageCount <= value.pageCount![value.pageCount!.length - 1]) && (e.pageCount >= value.pageCount![0]))
+              return
+            }
+            temp = temp.filter(e => e.pageCount && (e.pageCount >= value.pageCount![0]))
+          }
+          if (value?.year && value.year.length > 0) {
+            if (value.year!.length > 2) {
+              temp = temp.filter(e => e.year && (e.year <= value.year![value.year!.length - 1]) && (e.year >= value.year![0]))
+              return
+            }
+            temp = temp.filter(e => {
+              return e.year && (e.year >= value.year![0])
+            })
+          }
+          this.books = temp;
+        }),
         takeUntil(this.destroy$)
       )
       .subscribe()
@@ -65,8 +93,7 @@ export class BooksComponent implements OnInit, OnDestroy {
             this.books = this.dataService.getBooks()
               .filter(e =>
                 (e.name.toLowerCase().includes(value.search?.toLowerCase()!)
-                  || (Array.isArray(e.author) && e.author.filter(author => author.toLowerCase().includes(value.search!.toLowerCase())))
-                  || (typeof (e.author) === "string" && e.author.toLowerCase().includes(value.search!.toLowerCase()))
+                  || e.author.toLowerCase().includes(value.search!.toLowerCase())
                   || e.description?.toLowerCase().includes(value.search!.toLowerCase())
                 )
               )
@@ -77,6 +104,7 @@ export class BooksComponent implements OnInit, OnDestroy {
         takeUntil(this.destroy$)
       )
       .subscribe()
+    this.resetBookFilterForm()
   }
 
   resetBookFilterForm() {

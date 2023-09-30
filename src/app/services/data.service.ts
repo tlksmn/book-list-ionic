@@ -9,7 +9,7 @@ export interface Message {
 }
 
 export interface BookElem {
-  author: string | string[];
+  author: string;
   name: string;
   pageCount: number;
   language: string;
@@ -191,7 +191,7 @@ export class DataService {
       genre: ''
     },
     {
-      author: ['Евгений Петров', 'Илья Ильф'],
+      author: 'Евгений Петров, Илья Ильф',
       name: 'Двенадцать стульев',
       year: 0,
       pageCount: 700,
@@ -200,8 +200,8 @@ export class DataService {
       genre: ''
     },
     {
-      author: 'Идиот',
-      name: 'Фёдор Достоевский',
+      author: 'Фёдор Достоевский',
+      name: 'Идиот',
       year: 0,
       pageCount: 140,
       language: 'russian',
@@ -255,7 +255,7 @@ export class DataService {
     },
     {
       name: 'Понедельник начинается в субботу',
-      author: ['Аркадий Стругацкий', 'Борис Стругацкий'],
+      author: 'Аркадий Стругацкий, Борис Стругацкий',
       year: 0,
       pageCount: 735,
       language: 'russian',
@@ -275,6 +275,7 @@ export class DataService {
 
   constructor() {
   }
+
   private idLast = 28;
 
   public getMessages(): Message[] {
