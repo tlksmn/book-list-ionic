@@ -1,0 +1,11 @@
+.cntnt{
+  .field-val{
+    display: flex;
+    gap: 4px;
+    color: #4d4d4d;
+    align-content: flex-end;
+  }
+  & .btn-save{
+    margin-left: 15em;
+  }
+}

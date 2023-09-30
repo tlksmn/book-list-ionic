@@ -63,7 +63,8 @@ export class BooksComponent implements OnInit, OnDestroy {
         tap((value) => {
           if (value.search && value.search?.length > 0) {
             this.books = this.dataService.getBooks()
-              .filter(e => (e.name.toLowerCase().includes(value.search?.toLowerCase()!)
+              .filter(e =>
+                (e.name.toLowerCase().includes(value.search?.toLowerCase()!)
                   || (Array.isArray(e.author) && e.author.filter(author => author.toLowerCase().includes(value.search!.toLowerCase())))
                   || (typeof (e.author) === "string" && e.author.toLowerCase().includes(value.search!.toLowerCase()))
                   || e.description?.toLowerCase().includes(value.search!.toLowerCase())

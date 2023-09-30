@@ -1,11 +1,76 @@
 <app-header-back header="New book"></app-header-back>
 
-<ion-content>
-  <ion-list>
+<ion-content class="cntnt">
+  <form [formGroup]="newBookForm" (submit)="submitForm()">
     <ion-item>
-      <ion-label>
-        <div>Should add new book</div>
+      <ion-item-group class="field-val">
+        <ion-icon name="book-outline" aria-hidden="true" color="primary"></ion-icon>
+        <ion-label>Name:</ion-label>
+      </ion-item-group>
+      <ion-label class="ion-text-wrap">
+        <ion-input formControlName="name" aria-label="name" type="text" placeholder="Enter book name"></ion-input>
       </ion-label>
     </ion-item>
-  </ion-list>
+    <ion-item>
+      <ion-item-group class="field-val">
+        <ion-icon aria-hidden="true" name="people-outline" color="primary"></ion-icon>
+        <ion-label>Author:</ion-label>
+      </ion-item-group>
+      <ion-label class="ion-text-wrap">
+        <ion-input formControlName="author" aria-label="" type="text" placeholder="Enter author name"></ion-input>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-item-group class="field-val">
+        <ion-icon aria-hidden="true" name="language-outline" color="primary"/>
+        <ion-label>Description:</ion-label>
+      </ion-item-group>
+      <ion-label class="ion-text-wrap">
+        <ion-input formControlName="description" aria-label="" type="text"
+                   placeholder="Enter book description"></ion-input>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-item-group class="field-val">
+        <ion-icon aria-hidden="true" name="chevron-expand-outline" color="primary"></ion-icon>
+        <ion-label>Pages:</ion-label>
+      </ion-item-group>
+      <ion-label class="ion-text-wrap">
+        <ion-input formControlName="pageCount" aria-label="" type="text" type="number"
+                   placeholder="Enter book page count"></ion-input>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-item-group class="field-val">
+        <ion-icon aria-hidden="true" name="trail-sign-outline" color="primary"></ion-icon>
+        <ion-label>Genre:</ion-label>
+      </ion-item-group>
+      <ion-label class="ion-text-wrap">
+        <ion-input formControlName="genre" aria-label="" type="text" placeholder="Enter book genre"></ion-input>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-item-group class="field-val">
+        <ion-icon aria-hidden="true" name="language-outline" color="primary"/>
+        <ion-label>Language:</ion-label>
+      </ion-item-group>
+      <ion-label class="ion-text-wrap">
+        <ion-input formControlName="language" aria-label="" type="text" placeholder="Enter book language"></ion-input>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-item-group class="field-val">
+        <ion-icon name="calendar-clear-outline" aria-hidden="true" color="primary"></ion-icon>
+        <ion-label>Year:</ion-label>
+      </ion-item-group>
+      <ion-label class="ion-text-wrap">
+        <ion-input formControlName="year" aria-label="" type="number"
+                   placeholder="Enter year of book publishing"></ion-input>
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-button type="submit" class="btn-save" fill="outline" size="small">SAVE</ion-button>
+    </ion-item>
+  </form>
 </ion-content>

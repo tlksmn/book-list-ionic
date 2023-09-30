@@ -4,6 +4,7 @@ import {NewBookRoutingModule} from "./new-book-routing.module";
 import {NewBookComponent} from "./new-book.component";
 import {SharedModule} from "../../shared/shared.module";
 import {IonicModule} from "@ionic/angular";
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import {IonicModule} from "@ionic/angular";
     CommonModule,
     NewBookRoutingModule,
     SharedModule,
-    IonicModule
+    IonicModule,
+    ReactiveFormsModule
   ]
 })
 export class NewBookModule {

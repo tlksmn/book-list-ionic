@@ -13,12 +13,12 @@
           <ion-searchbar formControlName="search" animated="true" placeholder="Search book or author"></ion-searchbar>
         </form>
         <ion-button fill="outline" size="small" (click)="resetBookFilterForm()">
-          <ion-icon  slot="icon-only" name="refresh-outline"></ion-icon>
-<!--          Reset all-->
+          <ion-icon slot="icon-only" name="refresh-outline"></ion-icon>
+          <!--          Reset all-->
         </ion-button>
         <ion-button fill="outline" size="small" (click)="goToNewBookPage()">
-          <ion-icon  slot="icon-only" name="add-outline"></ion-icon>
-<!--          New book-->
+          <ion-icon slot="icon-only" name="add-outline"></ion-icon>
+          <!--          New book-->
         </ion-button>
       </ion-item>
       <ion-item class="item">
@@ -68,9 +68,9 @@
       </ion-item>
     </ion-list>
     <ion-list>
-      <ion-item *ngFor="let book of books; let i=index">
+      <ion-item *ngFor="let book of books">
         <ng-container *ngIf="book">
-          <ion-label [routerLink]="'/books/' + i">
+          <ion-label [routerLink]="'/books/' + book.id">
             <div>
               <span style="color: #9d9fa6;">{{book.name}}</span>
               <span style="color: #d0d0d0; margin: 0 4px">{{book.year}}</span>
