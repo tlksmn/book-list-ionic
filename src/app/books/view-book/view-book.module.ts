@@ -4,6 +4,7 @@ import {ViewBookComponent} from "./view-book.component";
 import {IonicModule} from "@ionic/angular";
 import { FormsModule } from '@angular/forms';
 import {ViewBookRoutingModule} from "./view-book-routing.module";
+import {SharedModule} from "../../shared/shared.module";
 
 
 
@@ -13,7 +14,8 @@ import {ViewBookRoutingModule} from "./view-book-routing.module";
     CommonModule,
     IonicModule,
     ViewBookRoutingModule,
-    FormsModule
+    FormsModule,
+    SharedModule,
   ]
 })
 export class ViewBookModule { }

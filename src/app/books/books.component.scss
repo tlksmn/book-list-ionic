@@ -1,6 +1,15 @@
-.toolbar-header{
+.toolbar-header {
   display: flex;
-  position: sticky;
-  top: 0;
+  //position: sticky;
+  flex-wrap: wrap;
+  //top: 0;
   z-index: 2;
+
+  .item {
+    flex-basis: 33.3%;
+  }
+
+  .search {
+    flex-basis: 100%;
+  }
 }

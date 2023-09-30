@@ -1,10 +1,4 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button [text]="getBackButtonText()" defaultHref="/books"></ion-back-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
+<app-header-back header="Books"></app-header-back>
 
 <ion-content [fullscreen]="true" *ngIf="currentBook">
   <ion-item>

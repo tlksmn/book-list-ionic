@@ -12,17 +12,28 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'books',
     pathMatch: 'full'
   },
   {
     path: 'books',
-    loadChildren: () => import('./books/books.module').then(m => m.BooksModule)
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./books/books.module').then(m => m.BooksModule)
+      },
+      {
+        path: 'create',
+        loadChildren: () => import('./books/new-book/new-book.module').then(m => m.NewBookModule)
+      },
+      {
+        path: ':id',
+        loadChildren: () => import('./books/view-book/view-book.module').then(m => m.ViewBookModule)
+      }
+    ]
   },
-  {
-    path: 'books/:id',
-    loadChildren: () => import('./books/view-book/view-book.module').then(m => m.ViewBookModule)
-  }
+
+
 ];
 
 @NgModule({

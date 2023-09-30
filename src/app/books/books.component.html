@@ -6,64 +6,82 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <ion-list class="toolbar-header">
-    <ion-item>
-      <ion-select label="Author" [interfaceOptions]="customAlertOptions" [multiple]="true" interface="alert"
-                  placeholder="Select">
-        <ion-select-option value="bacon">Bacon</ion-select-option>
-        <ion-select-option value="onions">Onions</ion-select-option>
-        <ion-select-option value="pepperoni">Pepperoni</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-select label="Year" [interfaceOptions]="customAlertOptions" [multiple]="true" interface="alert"
-                  placeholder="Select">
-        <ion-select-option value="bacon">Bacon</ion-select-option>
-        <ion-select-option value="onions">Onions</ion-select-option>
-        <ion-select-option value="pepperoni">Pepperoni</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-select label="Page" [interfaceOptions]="customAlertOptions" [multiple]="true" interface="alert"
-                  placeholder="Select">
-        <ion-select-option value="bacon">Bacon</ion-select-option>
-        <ion-select-option value="onions">Onions</ion-select-option>
-        <ion-select-option value="pepperoni">Pepperoni</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-select label="Language" [interfaceOptions]="customAlertOptions" [multiple]="true" interface="alert"
-                  placeholder="Select">
-        <ion-select-option value="bacon">Bacon</ion-select-option>
-        <ion-select-option value="onions">Onions</ion-select-option>
-        <ion-select-option value="pepperoni">Pepperoni</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-select label="Genre" [interfaceOptions]="customAlertOptions" [multiple]="true" interface="alert"
-                  placeholder="Select">
-        <ion-select-option value="bacon">Bacon</ion-select-option>
-        <ion-select-option value="onions">Onions</ion-select-option>
-        <ion-select-option value="pepperoni">Pepperoni</ion-select-option>
-      </ion-select>
-    </ion-item>
-  </ion-list>
-  <ion-list>
-    <ion-item *ngFor="let book of books; let i=index">
-      <ng-container *ngIf="book">
-        <ion-label [routerLink]="'/books/' + i">
-          <div>
-            <span style="color: #9d9fa6;">{{book.name}}</span>
-            <span style="color: #d0d0d0; margin: 0 4px">{{book.year}}</span>
-            <span style="color: #2fdf75; margin: 0 4px">{{book.pageCount}}</span>
-            <span style="color: #eeeefc; ">{{book.language}}</span>
-          </div>
-          <div>
-            <span style="color: #6a64ff; margin: 0 4px 0 0">{{book.author}}</span>
-            <span>{{book.genre}}</span>
-          </div>
-        </ion-label>
-      </ng-container>
-    </ion-item>
-  </ion-list>
+  <form [formGroup]="bookFilterForm">
+    <ion-list class="toolbar-header">
+      <ion-item class="search">
+        <ion-searchbar formControlName="search" animated="true" placeholder="Search book or author"></ion-searchbar>
+        <ion-button fill="outline" size="small" (click)="resetBookFilterForm()">
+          <ion-icon  slot="icon-only" name="refresh-outline"></ion-icon>
+<!--          Reset all-->
+        </ion-button>
+        <ion-button fill="outline" size="small" (click)="goToNewBookPage()">
+          <ion-icon  slot="icon-only" name="add-outline"></ion-icon>
+<!--          New book-->
+        </ion-button>
+      </ion-item>
+      <ion-item class="item">
+        <ion-select formControlName="author" label="Author" [interfaceOptions]="customAlertOptions" [multiple]="true"
+                    interface="alert"
+                    placeholder="Select">
+          <ng-container *ngIf="bookFilterFormValues.author as authors">
+            <ion-select-option *ngFor="let author of authors" [value]="author">{{author}}</ion-select-option>
+          </ng-container>
+        </ion-select>
+      </ion-item>
+      <ion-item class="item">
+        <ion-select formControlName="year" label="Year" [interfaceOptions]="customAlertOptions" [multiple]="true"
+                    interface="alert"
+                    placeholder="Select">
+          <ng-container *ngIf="bookFilterFormValues.year as years">
+            <ion-select-option *ngFor="let year of years" [value]="year">{{year}}</ion-select-option>
+          </ng-container>
+        </ion-select>
+      </ion-item>
+      <ion-item class="item">
+        <ion-select formControlName="pageCount" label="Page" [interfaceOptions]="customAlertOptions" [multiple]="true"
+                    interface="alert"
+                    placeholder="Select">
+          <ng-container *ngIf="bookFilterFormValues.pageCount as pages">
+            <ion-select-option *ngFor="let page of pages" [value]="page">{{page}}</ion-select-option>
+          </ng-container>
+        </ion-select>
+      </ion-item>
+      <ion-item class="item">
+        <ion-select formControlName="language" label="Language" [interfaceOptions]="customAlertOptions"
+                    [multiple]="true" interface="alert"
+                    placeholder="Select">
+          <ng-container *ngIf="bookFilterFormValues.language as languages">
+            <ion-select-option *ngFor="let language of languages" [value]="language">{{language}}</ion-select-option>
+          </ng-container>
+        </ion-select>
+      </ion-item>
+      <ion-item class="item">
+        <ion-select formControlName="genre" label="Genre" [interfaceOptions]="customAlertOptions" [multiple]="true"
+                    interface="alert"
+                    placeholder="Select">
+          <ng-container *ngIf="bookFilterFormValues.genre as genres">
+            <ion-select-option *ngFor="let genre of genres" [value]="genre">{{genre}}</ion-select-option>
+          </ng-container>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <ion-list>
+      <ion-item *ngFor="let book of books; let i=index">
+        <ng-container *ngIf="book">
+          <ion-label [routerLink]="'/books/' + i">
+            <div>
+              <span style="color: #9d9fa6;">{{book.name}}</span>
+              <span style="color: #d0d0d0; margin: 0 4px">{{book.year}}</span>
+              <span style="color: #2fdf75; margin: 0 4px">{{book.pageCount}}</span>
+              <span style="color: #eeeefc; ">{{book.language}}</span>
+            </div>
+            <div>
+              <span style="color: #6a64ff; margin: 0 4px 0 0">{{book.author}}</span>
+              <span>{{book.genre}}</span>
+            </div>
+          </ion-label>
+        </ng-container>
+      </ion-item>
+    </ion-list>
+  </form>
 </ion-content>

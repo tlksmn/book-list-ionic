@@ -12,15 +12,10 @@ export class ViewBookComponent implements OnInit {
   private readonly dataService: DataService = inject(DataService)
   private readonly activatedRoute: ActivatedRoute = inject(ActivatedRoute);
   private readonly platform: Platform = inject(Platform);
-  public currentBook!: BookElem
+  public currentBook!: BookElem;
 
   ngOnInit() {
     const id = this.activatedRoute.snapshot.paramMap.get('id') as string;
     this.currentBook = this.dataService.getBookById(parseInt(id, 10));
-  }
-
-  public getBackButtonText() {
-    const isIos = this.platform.is('ios')
-    return isIos ? 'Books' : '';
   }
 }
