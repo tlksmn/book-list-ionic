@@ -30,6 +30,8 @@ export class BooksComponent implements OnInit, OnDestroy {
     pageCount: new FormControl([]),
     language: new FormControl([]),
     genre: new FormControl([]),
+  })
+  public bookSearchForm = new FormGroup({
     search: new FormControl('')
   })
 
@@ -44,15 +46,33 @@ export class BooksComponent implements OnInit, OnDestroy {
     this.books = this.dataService.getBooks();
     this.bookFilterFormValues = {
       author: [...new Set(this.books.map(e => e.author).flat().filter(e => e && e.length > 1))],
-      year: [...new Set(this.books.map(e => e.year!).filter(e => e && e > 1))],
-      pageCount: [...new Set(this.books.map(e => e.pageCount).filter(e => e && e > 1))],
+      year: [...new Set(this.books.map(e => e.year!).filter(e => e && e > 1).sort((a, b) => a - b))],
+      pageCount: [...new Set(this.books.map(e => e.pageCount).filter(e => e && e > 1).sort((a, b) => a - b))],
       language: [...new Set(this.books.map(e => e.language).filter(e => e && e.length > 1))],
       genre: [...new Set(this.books.map(e => e.genre).filter(e => e && e.length > 1))],
     }
-    console.log(this.bookFilterFormValues)
     this.bookFilterForm.valueChanges
       .pipe(
         tap(console.log),
+        takeUntil(this.destroy$)
+      )
+      .subscribe()
+
+    this.bookSearchForm.valueChanges
+      .pipe(
+        tap((value) => {
+          if (value.search && value.search?.length > 0) {
+            this.books = this.dataService.getBooks()
+              .filter(e => (e.name.toLowerCase().includes(value.search?.toLowerCase()!)
+                  || (Array.isArray(e.author) && e.author.filter(author => author.toLowerCase().includes(value.search!.toLowerCase())))
+                  || (typeof (e.author) === "string" && e.author.toLowerCase().includes(value.search!.toLowerCase()))
+                  || e.description?.toLowerCase().includes(value.search!.toLowerCase())
+                )
+              )
+          } else {
+            this.books = this.dataService.getBooks()
+          }
+        }),
         takeUntil(this.destroy$)
       )
       .subscribe()

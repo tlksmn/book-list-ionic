@@ -15,7 +15,6 @@ export class HeaderBackComponent implements OnInit {
 
   public getBackButtonText() {
     const isIos = this.platform.is('ios')
-    return isIos ? 'Books' : '';
+    return isIos ? this.header : '';
   }
-
 }

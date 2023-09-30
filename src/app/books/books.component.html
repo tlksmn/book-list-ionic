@@ -9,7 +9,9 @@
   <form [formGroup]="bookFilterForm">
     <ion-list class="toolbar-header">
       <ion-item class="search">
-        <ion-searchbar formControlName="search" animated="true" placeholder="Search book or author"></ion-searchbar>
+        <form [formGroup]="bookSearchForm">
+          <ion-searchbar formControlName="search" animated="true" placeholder="Search book or author"></ion-searchbar>
+        </form>
         <ion-button fill="outline" size="small" (click)="resetBookFilterForm()">
           <ion-icon  slot="icon-only" name="refresh-outline"></ion-icon>
 <!--          Reset all-->

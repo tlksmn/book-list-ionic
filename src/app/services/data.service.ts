@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
 export interface Message {
   fromName: string;
@@ -14,7 +14,8 @@ export interface BookElem {
   pageCount: number;
   language: string;
   genre: string;
-  year?: number
+  year?: number;
+  description?: string
 }
 
 @Injectable({
@@ -250,7 +251,8 @@ export class DataService {
     },
   ]
 
-  constructor() { }
+  constructor() {
+  }
 
   public getMessages(): Message[] {
     return this.messages;
@@ -259,11 +261,12 @@ export class DataService {
   public getMessageById(id: number): Message {
     return this.messages[id];
   }
-  public getBooks(): BookElem[]{
+
+  public getBooks(): BookElem[] {
     return this.books;
   }
 
-  public getBookById(id: number): BookElem{
+  public getBookById(id: number): BookElem {
     return this.books[id] || this.books[1]
   }
 }

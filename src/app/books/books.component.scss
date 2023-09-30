@@ -4,12 +4,14 @@
   flex-wrap: wrap;
   //top: 0;
   z-index: 2;
-
   .item {
     flex-basis: 33.3%;
   }
 
   .search {
     flex-basis: 100%;
+    form{
+      width: 100%;
+    }
   }
 }

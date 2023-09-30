@@ -18,4 +18,6 @@ export class ViewBookComponent implements OnInit {
     const id = this.activatedRoute.snapshot.paramMap.get('id') as string;
     this.currentBook = this.dataService.getBookById(parseInt(id, 10));
   }
+
+  protected readonly Array = Array;
 }
