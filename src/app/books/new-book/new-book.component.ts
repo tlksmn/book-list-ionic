@@ -11,6 +11,7 @@ export class NewBookComponent implements OnInit {
   private readonly dataService: DataService = inject(DataService);
   createdBook: boolean = false;
   secondToShow: number = 5_000;
+  errorMessageShow: boolean = false;
 
   public newBookForm = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.minLength(3)]),
@@ -29,6 +30,11 @@ export class NewBookComponent implements OnInit {
     if (this.newBookForm.valid) {
       this.dataService.addNewBook(this.newBookForm.value as BookElem)
       this.createdBook = true;
+    } else {
+      this.errorMessageShow = true;
+      setTimeout(() => {
+        this.errorMessageShow = false;
+      }, this.secondToShow / 1.5)
     }
   }
 

@@ -32,6 +32,9 @@
       <ion-input formControlName="year" label="Year" type="number"
                  placeholder="Enter year of book publishing"></ion-input>
     </ion-item>
+    <ion-item *ngIf="errorMessageShow">
+      <ion-text style="color: #cf3c4f">Errors in text fields. please check)</ion-text>
+    </ion-item>
     <ion-button type="submit" class="btn-save" fill="outline" size="small">SAVE</ion-button>
   </form>
 </ion-content>
