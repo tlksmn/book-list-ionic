@@ -35,10 +35,38 @@ export class BooksComponent implements OnInit, OnDestroy {
     search: new FormControl('')
   })
 
-  customAlertOptions = {
-    header: 'Pizza Toppings',
-    subHeader: 'Select your favorite topping',
-    message: 'Choose only one',
+  authorAlertOptions = {
+    header: 'Authors toppings',
+    subHeader: 'Select your needed authors',
+    message: 'Choose any options',
+    translucent: true,
+  };
+  
+  yearAlertOptions = {
+    header: 'Years toppings',
+    subHeader: 'Select your needed years',
+    message: 'Choose any options, if its more then one, then select between first and last values books',
+    translucent: true,
+  };
+
+  pageCountAlertOptions = {
+    header: 'Years toppings',
+    subHeader: 'Select your needed years',
+    message: 'Choose any options, if its more then one, then select between first and last values books',
+    translucent: true,
+  };
+
+  languageAlertOptions = {
+    header: 'Book language toppings',
+    subHeader: 'Select your needed languages',
+    message: 'Choose any options',
+    translucent: true,
+  };
+
+  genreAlertOptions = {
+    header: 'Genre toppings',
+    subHeader: 'Select your needed genre',
+    message: 'Choose any options',
     translucent: true,
   };
 

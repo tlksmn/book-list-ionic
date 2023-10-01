@@ -18,7 +18,7 @@
 
       </ion-item>
       <ion-item class="item">
-        <ion-select formControlName="author" label="Author" [interfaceOptions]="customAlertOptions" [multiple]="true"
+        <ion-select formControlName="author" label="Author" [interfaceOptions]="authorAlertOptions" [multiple]="true"
                     interface="alert"
                     placeholder="Select">
           <ng-container *ngIf="bookFilterFormValues.author as authors">
@@ -27,7 +27,7 @@
         </ion-select>
       </ion-item>
       <ion-item class="item">
-        <ion-select formControlName="year" label="Year" [interfaceOptions]="customAlertOptions" [multiple]="true"
+        <ion-select formControlName="year" label="Year" [interfaceOptions]="yearAlertOptions" [multiple]="true"
                     interface="alert"
                     placeholder="Select">
           <ng-container *ngIf="bookFilterFormValues.year as years">
@@ -36,7 +36,8 @@
         </ion-select>
       </ion-item>
       <ion-item class="item">
-        <ion-select formControlName="pageCount" label="Page" [interfaceOptions]="customAlertOptions" [multiple]="true"
+        <ion-select formControlName="pageCount" label="Page" [interfaceOptions]="pageCountAlertOptions"
+                    [multiple]="true"
                     interface="alert"
                     placeholder="Select">
           <ng-container *ngIf="bookFilterFormValues.pageCount as pages">
@@ -45,7 +46,7 @@
         </ion-select>
       </ion-item>
       <ion-item class="item">
-        <ion-select formControlName="language" label="Language" [interfaceOptions]="customAlertOptions"
+        <ion-select formControlName="language" label="Language" [interfaceOptions]="languageAlertOptions"
                     [multiple]="true" interface="alert"
                     placeholder="Select">
           <ng-container *ngIf="bookFilterFormValues.language as languages">
@@ -54,7 +55,7 @@
         </ion-select>
       </ion-item>
       <ion-item class="item">
-        <ion-select formControlName="genre" label="Genre" [interfaceOptions]="customAlertOptions" [multiple]="true"
+        <ion-select formControlName="genre" label="Genre" [interfaceOptions]="genreAlertOptions" [multiple]="true"
                     interface="alert"
                     placeholder="Select">
           <ng-container *ngIf="bookFilterFormValues.genre as genres">

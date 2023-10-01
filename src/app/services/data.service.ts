@@ -114,7 +114,7 @@ export class DataService {
       author: 'Jane Austen',
       name: 'Pride and Prejudice',
       year: 1813,
-      pageCount: 0,
+      pageCount: 320,
       language: 'english',
       id: 11,
       genre: ''
@@ -123,7 +123,7 @@ export class DataService {
       author: 'Charlotte Brontë',
       name: 'Jane Eyre',
       year: 1874,
-      pageCount: 0,
+      pageCount: 190,
       language: 'english',
       id: 12,
       genre: ''
@@ -132,7 +132,7 @@ export class DataService {
       author: 'Brave New World',
       name: 'Aldous Huxley',
       year: 1932,
-      pageCount: 0,
+      pageCount: 400,
       language: 'english',
       id: 13,
       genre: ''
@@ -150,7 +150,7 @@ export class DataService {
       author: 'Emily Brontë',
       name: 'Wuthering Heights',
       year: 1847,
-      pageCount: 0,
+      pageCount: 98,
       language: 'english',
       id: 15,
       genre: ''
@@ -167,7 +167,7 @@ export class DataService {
     {
       author: 'Михаил Булгаков',
       name: 'Мастер и Маргарита',
-      year: 0,
+      year: 1890,
       pageCount: 1095,
       language: 'russian',
       id: 17,
@@ -194,7 +194,7 @@ export class DataService {
     {
       author: 'Евгений Петров, Илья Ильф',
       name: 'Двенадцать стульев',
-      year: 0,
+      year: 1928,
       pageCount: 700,
       language: 'russian',
       id: 20,
@@ -203,7 +203,7 @@ export class DataService {
     {
       author: 'Фёдор Достоевский',
       name: 'Идиот',
-      year: 0,
+      year: 1888,
       pageCount: 140,
       language: 'russian',
       id: 21,
@@ -212,7 +212,7 @@ export class DataService {
     {
       author: 'Александр Пушкин',
       name: 'Евгений Онегин',
-      year: 0,
+      year: 1830,
       pageCount: 335,
       language: 'russian',
       id: 22,
@@ -221,7 +221,7 @@ export class DataService {
     {
       author: 'Лев Толстой',
       name: 'Война и мир',
-      year: 0,
+      year: 1854,
       pageCount: 1840,
       language: 'russian',
       id: 23,
@@ -230,7 +230,7 @@ export class DataService {
     {
       name: 'Герой нашего времени',
       author: 'Михаил Лермонтов',
-      year: 0,
+      year: 1830,
       pageCount: 360,
       language: 'russian',
       id: 24,
@@ -239,7 +239,7 @@ export class DataService {
     {
       name: 'Братья Карамазовы',
       author: 'Фёдор Достоевский',
-      year: 0,
+      year: 1850,
       pageCount: 832,
       language: 'russian',
       id: 25,
@@ -248,7 +248,7 @@ export class DataService {
     {
       name: 'Дом, в котором…',
       author: 'Мариам Петросян',
-      year: 0,
+      year: 1900,
       pageCount: 692,
       language: 'russian',
       id: 26,
@@ -257,7 +257,7 @@ export class DataService {
     {
       name: 'Понедельник начинается в субботу',
       author: 'Аркадий Стругацкий, Борис Стругацкий',
-      year: 0,
+      year: 1956,
       pageCount: 735,
       language: 'russian',
       id: 27,
@@ -266,7 +266,7 @@ export class DataService {
     {
       name: 'Мёртвые души',
       author: 'Николай Гоголь',
-      year: 0,
+      year: 1939,
       pageCount: 397,
       language: 'russian',
       id: 28,
