@@ -13,11 +13,16 @@ export class ViewBookComponent implements OnInit {
   private readonly activatedRoute: ActivatedRoute = inject(ActivatedRoute);
   public currentBook!: BookElem;
   editBookMode: boolean = false;
+  updatedBook: boolean = false;
+  public secondToShow = 5_000
   public editBookForm: any;
 
   submitForm() {
     if (this.editBookForm.valid) {
-      this.dataService.editBook({...this.editBookForm.value as BookElem, id: this.currentBook.id})
+      this.dataService.editBook({
+        ...this.editBookForm.value as BookElem,
+        id: this.currentBook.id
+      }) && (this.updatedBook = true)
     }
   }
 

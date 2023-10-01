@@ -1,6 +1,11 @@
 <app-header-back header="New book" [isBack]="true"></app-header-back>
 
 <ion-content class="cntnt">
+  <ion-toast [isOpen]="createdBook"
+             message="Successfully created new book!"
+             icon="checkmark-done-outline"
+             (didDismiss)="createdBook=false"
+             [duration]="secondToShow"/>
   <form [formGroup]="newBookForm" (submit)="submitForm()">
     <ion-item>
       <ion-input formControlName="name" label="Name" type="text" placeholder="Enter book name"/>

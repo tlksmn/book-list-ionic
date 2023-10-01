@@ -59,16 +59,15 @@ export class BooksComponent implements OnInit, OnDestroy {
             temp = temp.filter(e => value.language!.includes(e.language))
           }
           if (value?.pageCount && value.pageCount.length > 0) {
-            if (value.pageCount!.length > 2) {
+            if (value.pageCount!.length >= 2) {
               temp = temp.filter(e => e.pageCount && (e.pageCount <= value.pageCount![value.pageCount!.length - 1]) && (e.pageCount >= value.pageCount![0]))
-              return
+              console.log(temp)
             }
             temp = temp.filter(e => e.pageCount && (e.pageCount >= value.pageCount![0]))
           }
           if (value?.year && value.year.length > 0) {
-            if (value.year!.length > 2) {
+            if (value.year!.length >= 2) {
               temp = temp.filter(e => e.year && (e.year <= value.year![value.year!.length - 1]) && (e.year >= value.year![0]))
-              return
             }
             temp = temp.filter(e => {
               return e.year && (e.year >= value.year![0])

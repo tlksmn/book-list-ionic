@@ -5,6 +5,11 @@
 </app-header-back>
 
 <ion-content [fullscreen]="true" *ngIf="currentBook">
+  <ion-toast [isOpen]="updatedBook"
+             message="Successfully updated!"
+             icon="checkmark-done-outline"
+             (didDismiss)="updatedBook=false"
+             [duration]="secondToShow"/>
   <ng-container *ngIf="!editBookMode else editBookModeView">
     <ion-item>
       <ion-item-group class="field-val">
