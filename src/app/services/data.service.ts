@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+import {ReplaySubject} from "rxjs";
 
 export interface Message {
   fromName: string;
@@ -271,7 +272,8 @@ export class DataService {
       id: 28,
       genre: ''
     },
-  ]
+  ];
+  public detectChange$: ReplaySubject<boolean> = new ReplaySubject<boolean>(1);
 
   constructor() {
   }
@@ -296,6 +298,18 @@ export class DataService {
 
   public addNewBook(book: BookElem) {
     this.idLast++;
-    return this.books.push({...book, id: this.idLast})
+    const index = this.books.push({...book, id: this.idLast})
+    this.detectChange$.next(true);
+    return index
+  }
+
+  public editBook(book: BookElem) {
+    const currentBookIndex = this.books.findIndex(e => e.id === book.id)
+    if (currentBookIndex >= 0) {
+      this.books[currentBookIndex] = book;
+      this.detectChange$.next(true);
+      return true;
+    }
+    return false
   }
 }

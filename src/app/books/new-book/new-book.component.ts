@@ -17,7 +17,7 @@ export class NewBookComponent implements OnInit {
     language: new FormControl('russian', [Validators.required, Validators.minLength(2)]),
     genre: new FormControl('classic', [Validators.required, Validators.minLength(1)]),
     pageCount: new FormControl(10, [Validators.required, Validators.min(1)]),
-    year: new FormControl(2023),
+    year: new FormControl(2023, [Validators.required, Validators.min(1)]),
   })
 
   ngOnInit() {

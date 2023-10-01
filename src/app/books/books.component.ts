@@ -1,4 +1,4 @@
-import {Component, inject, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, inject, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
 import {BookElem, DataService} from "../services/data.service";
 import {FormControl, FormGroup} from "@angular/forms";
 import {Subject, takeUntil, tap} from "rxjs";
@@ -22,7 +22,7 @@ export class BooksComponent implements OnInit, OnDestroy {
   private readonly router: Router = inject(Router);
   private destroy$: Subject<boolean> = new Subject<boolean>();
   public books: BookElem[] = [];
-  public bookFilterFormValues!: BookFilterFormValues
+  public bookFilterFormValues!: BookFilterFormValues;
 
   public bookFilterForm = new FormGroup({
     author: new FormControl(['']),
@@ -44,13 +44,7 @@ export class BooksComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.books = this.dataService.getBooks();
-    this.bookFilterFormValues = {
-      author: [...new Set(this.books.map(e => e.author).flat().filter(e => e && e.length > 1))],
-      year: [...new Set(this.books.map(e => e.year!).filter(e => e && e > 1).sort((a, b) => a - b))],
-      pageCount: [...new Set(this.books.map(e => e.pageCount).filter(e => e && e > 1).sort((a, b) => a - b))],
-      language: [...new Set(this.books.map(e => e.language).filter(e => e && e.length > 1))],
-      genre: [...new Set(this.books.map(e => e.genre).filter(e => e && e.length > 1))],
-    }
+    this.bookFilterFormValues = this.calcBookFilter();
     this.bookFilterForm.valueChanges
       .pipe(
         tap((value) => {
@@ -104,7 +98,23 @@ export class BooksComponent implements OnInit, OnDestroy {
         takeUntil(this.destroy$)
       )
       .subscribe()
-    this.resetBookFilterForm()
+    this.resetBookFilterForm();
+    this.dataService.detectChange$.pipe(
+      tap(() => {
+        this.bookFilterFormValues = this.calcBookFilter()
+      }),
+      takeUntil(this.destroy$)
+    ).subscribe()
+  }
+
+  private calcBookFilter() {
+    return ({
+      author: [...new Set(this.books.map(e => e.author).flat().filter(e => e && e.length > 1))],
+      year: [...new Set(this.books.map(e => e.year!).filter(e => e && e > 1).sort((a, b) => a - b))],
+      pageCount: [...new Set(this.books.map(e => e.pageCount).filter(e => e && e > 1).sort((a, b) => a - b))],
+      language: [...new Set(this.books.map(e => e.language).filter(e => e && e.length > 1))],
+      genre: [...new Set(this.books.map(e => e.genre).filter(e => e && e.length > 1))],
+    })
   }
 
   resetBookFilterForm() {
