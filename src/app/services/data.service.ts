@@ -117,7 +117,7 @@ export class DataService {
       pageCount: 320,
       language: 'english',
       id: 11,
-      genre: ''
+      genre: 'roman'
     },
     {
       author: 'Charlotte Brontë',
@@ -126,7 +126,7 @@ export class DataService {
       pageCount: 190,
       language: 'english',
       id: 12,
-      genre: ''
+      genre: 'humor'
     },
     {
       author: 'Brave New World',
@@ -135,7 +135,7 @@ export class DataService {
       pageCount: 400,
       language: 'english',
       id: 13,
-      genre: ''
+      genre: 'poem'
     },
     {
       author: 'J. D. Salinger',
@@ -144,7 +144,7 @@ export class DataService {
       pageCount: 234,
       language: 'english',
       id: 14,
-      genre: ''
+      genre: 'poem'
     },
     {
       author: 'Emily Brontë',
@@ -153,7 +153,7 @@ export class DataService {
       pageCount: 98,
       language: 'english',
       id: 15,
-      genre: ''
+      genre: 'humor'
     },
     {
       author: 'Margaret Mitchell',
@@ -171,7 +171,7 @@ export class DataService {
       pageCount: 1095,
       language: 'russian',
       id: 17,
-      genre: ''
+      genre: 'roman'
     },
     {
       author: 'Лев Толстой',
@@ -180,7 +180,7 @@ export class DataService {
       pageCount: 884,
       language: 'russian',
       id: 18,
-      genre: ''
+      genre: 'poem'
     },
     {
       author: 'Фёдор Достоевский',
@@ -189,7 +189,7 @@ export class DataService {
       pageCount: 524,
       language: 'russian',
       id: 19,
-      genre: ''
+      genre: 'tragedy'
     },
     {
       author: 'Евгений Петров, Илья Ильф',
@@ -198,7 +198,7 @@ export class DataService {
       pageCount: 700,
       language: 'russian',
       id: 20,
-      genre: ''
+      genre: 'humor'
     },
     {
       author: 'Фёдор Достоевский',
@@ -207,7 +207,7 @@ export class DataService {
       pageCount: 140,
       language: 'russian',
       id: 21,
-      genre: ''
+      genre: 'humor'
     },
     {
       author: 'Александр Пушкин',
@@ -216,7 +216,7 @@ export class DataService {
       pageCount: 335,
       language: 'russian',
       id: 22,
-      genre: ''
+      genre: 'roman'
     },
     {
       author: 'Лев Толстой',
@@ -225,7 +225,7 @@ export class DataService {
       pageCount: 1840,
       language: 'russian',
       id: 23,
-      genre: ''
+      genre: 'roman'
     },
     {
       name: 'Герой нашего времени',
@@ -234,7 +234,7 @@ export class DataService {
       pageCount: 360,
       language: 'russian',
       id: 24,
-      genre: ''
+      genre: 'tragedy'
     },
     {
       name: 'Братья Карамазовы',
@@ -243,7 +243,7 @@ export class DataService {
       pageCount: 832,
       language: 'russian',
       id: 25,
-      genre: ''
+      genre: 'humor'
     },
     {
       name: 'Дом, в котором…',
@@ -252,7 +252,7 @@ export class DataService {
       pageCount: 692,
       language: 'russian',
       id: 26,
-      genre: ''
+      genre: 'poem'
     },
     {
       name: 'Понедельник начинается в субботу',
@@ -261,7 +261,7 @@ export class DataService {
       pageCount: 735,
       language: 'russian',
       id: 27,
-      genre: ''
+      genre: 'poem'
     },
     {
       name: 'Мёртвые души',
@@ -270,7 +270,7 @@ export class DataService {
       pageCount: 397,
       language: 'russian',
       id: 28,
-      genre: ''
+      genre: 'poem'
     },
   ];
   public detectChange$: ReplaySubject<boolean> = new ReplaySubject<boolean>(1);
