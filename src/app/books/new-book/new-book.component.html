@@ -1,4 +1,4 @@
-<app-header-back header="New book"></app-header-back>
+<app-header-back header="New book" [isBack]="true"></app-header-back>
 
 <ion-content class="cntnt">
   <form [formGroup]="newBookForm" (submit)="submitForm()">
@@ -27,8 +27,6 @@
       <ion-input formControlName="year" label="Year" type="number"
                  placeholder="Enter year of book publishing"></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-button type="submit" class="btn-save" fill="outline" size="small">SAVE</ion-button>
-    </ion-item>
+    <ion-button type="submit" class="btn-save" fill="outline" size="small">SAVE</ion-button>
   </form>
 </ion-content>

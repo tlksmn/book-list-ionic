@@ -5,6 +5,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {IonicModule} from "@ionic/angular";
 import {RouterModule} from "@angular/router";
 import {BooksRoutingModule} from "./books-routing.module";
+import {SharedModule} from "../shared/shared.module";
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import {BooksRoutingModule} from "./books-routing.module";
     IonicModule,
     RouterModule,
     BooksRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ]
 })
 export class BooksModule {

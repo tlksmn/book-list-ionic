@@ -1,7 +1,16 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button [text]="getBackButtonText()" defaultHref="/books"></ion-back-button>
-    </ion-buttons>
+    <ng-container *ngIf="isBack else headerNotBack">
+      <ion-buttons slot="start">
+        <ion-back-button [text]="getBackButtonText()" defaultHref="/books"></ion-back-button>
+      </ion-buttons>
+    </ng-container>
+    <ng-content></ng-content>
   </ion-toolbar>
 </ion-header>
+
+<ng-template #headerNotBack>
+  <ion-title>
+    {{header}}
+  </ion-title>
+</ng-template>

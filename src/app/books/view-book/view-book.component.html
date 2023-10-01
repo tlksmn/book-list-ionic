@@ -1,4 +1,8 @@
-<app-header-back [header]="this.currentBook.name"></app-header-back>
+<app-header-back [header]="this.currentBook.name" [isBack]="true">
+  <ion-buttons slot="end">
+    <ion-button>Edit</ion-button>
+  </ion-buttons>
+</app-header-back>
 
 <ion-content [fullscreen]="true" *ngIf="currentBook">
   <ion-item>

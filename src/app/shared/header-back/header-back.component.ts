@@ -8,6 +8,7 @@ import {Platform} from "@ionic/angular";
 })
 export class HeaderBackComponent implements OnInit {
   @Input() header: string = ''
+  @Input() isBack: boolean = false;
   private readonly platform: Platform = inject(Platform);
 
   ngOnInit() {

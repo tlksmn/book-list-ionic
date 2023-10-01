@@ -1,10 +1,9 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Books
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header-back header="Books" [isBack]="false">
+  <ion-button slot="end" fill="outline" size="small" (click)="goToNewBookPage()">
+    <ion-icon slot="start" name="add-outline"></ion-icon>
+    NEW BOOK
+  </ion-button>
+</app-header-back>
 <ion-content>
   <form [formGroup]="bookFilterForm">
     <ion-list class="toolbar-header">
@@ -16,10 +15,7 @@
           <ion-icon slot="icon-only" name="refresh-outline"></ion-icon>
           <!--          Reset all-->
         </ion-button>
-        <ion-button fill="outline" size="small" (click)="goToNewBookPage()">
-          <ion-icon slot="icon-only" name="add-outline"></ion-icon>
-          <!--          New book-->
-        </ion-button>
+
       </ion-item>
       <ion-item class="item">
         <ion-select formControlName="author" label="Author" [interfaceOptions]="customAlertOptions" [multiple]="true"
